@@ -1,0 +1,10 @@
+#!/usr/bin/python
+
+import datetime
+import subprocess
+
+basic = datetime.datetime.now().isoformat()
+tag = basic.replace(':', '-').replace('.', '-')
+
+subprocess.check_call(['docker', 'build', '-t', 'moshez/myubuntu:'+tag, '.'])
+subprocess.check_call(['docker', 'push', 'moshez/myubuntu:'+tag])
